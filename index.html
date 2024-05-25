@@ -27,12 +27,27 @@
 		
 		<div id="loveHeart">
 			<canvas id="garden"></canvas>
+
 			<div id="words">
-				<div id="messages">
-					小飞飞 小露露，这是我们相爱在一起的时光：
-					<div id="elapseClock"></div>
-					<div id="elapseClock"></div>
+				<div id="messagesName">
+					<span >
+						小飞飞
+						<span id="Love">
+							❤
+						</span>
+						小露露
+					</span>
 				</div>
+				<p></p>
+				<div id="messagesMeet">
+					这是我们认识的时光：
+					<div id="elapseClockMeet"></div>
+				</div>
+				<div id="messagesLove">
+					这是我们相爱的时光：
+					<div id="elapseClockLove"></div>
+				</div>
+				<p></p>
 				<div id="loveu">
 					爱你直到永永远远。<br/>
 					<div class="signature">—— 飞飞</div>
@@ -52,6 +67,13 @@ together.setMinutes(58);
 together.setSeconds(0);
 together.setMilliseconds(0);
 
+var meet = new Date();
+meet.setFullYear(2020, 8, 5);
+meet.setHours(14);
+meet.setMinutes(30);
+meet.setSeconds(0);
+meet.setMilliseconds(0);
+
 if (!document.createElement('canvas').getContext) {
 	var msg = document.createElement("div");
 	msg.id = "errorMsg";
@@ -66,9 +88,14 @@ if (!document.createElement('canvas').getContext) {
 		startHeartAnimation();
 	}, 5);
 
-	timeElapse(together);
+	timeElapseLove(together);
 	setInterval(function () {
-		timeElapse(together);
+		timeElapseLove(together);
+	}, 500);
+
+	timeElapseMeet(meet);
+	setInterval(function () {
+		timeElapseMeet(meet);
 	}, 500);
 
 	adjustCodePosition();
